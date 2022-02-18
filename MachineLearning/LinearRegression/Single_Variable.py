@@ -1,5 +1,5 @@
 #still not working, i think i got gradient descent right but i still cant get it to set both thetas to the correct values, but i havent double checked it yet so its probably very obvious
-
+#Feb 18 2022
 
 
 import numpy as np
