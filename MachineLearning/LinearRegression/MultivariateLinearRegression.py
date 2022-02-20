@@ -32,6 +32,10 @@ class model:
 
         return np.round(np.dot(new_data, self.params), 2)
 
+    def meanSquaredError(self, Y_hat, Y):
+        m = len(Y_hat)
+        return np.round(np.array((1/(2*m)) * sum(Y_hat - Y)**2), 2)
+
 
        
 
@@ -47,7 +51,15 @@ data1 = np.array([[1, 2, 3, 4, 5, 6, 7, 8, 9],
                   [29, 30, 31, 32, 33, 34, 35, 36, 37]])
 
 
+data1_Y = np.array([100, 200, 300, 400])
+
+
+
 
 m = model(data.shape)
+
+Y_hat = m.table_hypothesis(data1)
+
 print(f'model hypothesis with single vector: \n {m.hypothesis(data)}')
-print(f'model hypothesis with vector row: \n {m.table_hypothesis(data1)}')
+print(f'model hypothesis with vector row: \n {Y_hat}')
+print(f'model MAE with vector row: \n {m.meanSquaredError(Y_hat, Y = data1_Y)}')
