@@ -45,4 +45,18 @@ class CircularSingleLinkedList:
             return 'done'
         return 'error maybe?'
 
+    def isin(self, node_Value):
+        if not self.head:
+            return False
+        elif self.head.value == node_Value:
+            return True
+        else:
+            curNode = self.head
+            while curNode.value != node_Value:
+                if curNode == self.tail:
+                    return False
+                else:
+                    curNode = curNode.next
+            return True
+
 
