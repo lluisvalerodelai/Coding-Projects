@@ -1,4 +1,3 @@
-
 class node:
     def __init__(self, value, next = None):
         self.value = value
@@ -11,6 +10,9 @@ class CircularSingleLinkedList:
         self.tail = None
 
     def __iter__(self):
+        if not self.head:
+            return None
+        
         curNode = self.head
         while curNode != self.tail:
             yield curNode.value
@@ -44,7 +46,7 @@ class CircularSingleLinkedList:
             curNode.next = node
             return 'done'
         return 'error maybe?'
-
+    
     def isin(self, node_Value):
         if not self.head:
             return False
@@ -58,5 +60,41 @@ class CircularSingleLinkedList:
                 else:
                     curNode = curNode.next
             return True
-
-
+    
+    def delete(self, location):
+        if self.head is None:
+            return 'done'
+        elif location == 0:
+            if self.head == self.tail:
+                self.head.next = None
+                self.head = None
+                self.tail = None
+            else:
+                self.head = self.head.next
+                self.tail.next = self.head
+        elif location == -1:
+            if self.head == self.tail:
+                self.head.next = None
+                self.head = None
+                self.tail = None
+            else:
+                node = self.head
+                while node is not None:
+                    if node.next == self.tail:
+                        break
+                    node = node.next
+                node.next = self.head
+                self.tail = node
+        else:
+            tempNode = self.head
+            index = 0
+            while index < location - 1:
+                tempNode = tempNode.next
+                index += 1
+            nextNode = tempNode.next
+            tempNode.next = nextNode.next
+    def deletAll(self):
+        self.head == None
+        self.tail.next == None
+        self.tail == None
+        
