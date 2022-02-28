@@ -25,14 +25,17 @@ class LinearRegressionLib:
             
             
         
-        def GradientDescent(self, X, Yhat, Y, lr, epochs):
+        def GradientDescent(self, X, Y, lr) -> list:
 
             losses = []
-
+            
             for i in range(len(X)):
                 for j in range(len(X[i])):
-                    derivative_of_loss_WRT_theta = 2*(Yhat[i] - Y[i]) * X[i][j]
+                    print(self.Error(Y, self.hypothesis(X)))
+                    a.append(self.Error(Y, self.hypothesis(X)))
 
-                    print(derivative_of_loss_WRT_theta)
+                    derivative_of_loss_WRT_theta = 2*(self.hypothesis(X)[i] - Y[i]) * X[i][j]
 
                     self.params[j] = self.params[j] - lr * derivative_of_loss_WRT_theta
+
+            return losses
